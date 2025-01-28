@@ -1,10 +1,11 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { CursoApi } from "../types";
 
 type TarCursoProps = {
   titulo: string;
-  cursos: Array<string>;
+  cursos: Array<CursoApi>;
 };
 
 export default function TarCurso({ titulo, cursos }: TarCursoProps) {
@@ -29,7 +30,7 @@ export default function TarCurso({ titulo, cursos }: TarCursoProps) {
             <ol className="list-outside list-decimal pl-5">
               {cursos.map((curso, index) => (
                 <li className="text-gray-700 hover:list-disc dark:text-gray-300" key={index}>
-                  {curso}
+                  {curso.course}
                 </li>
               ))}
             </ol>

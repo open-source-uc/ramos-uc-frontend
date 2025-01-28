@@ -1,27 +1,60 @@
 "use client";
 import TarCurso from "./components/TarjetaCurso";
+import { OfgApi } from "./types";
 import { useEffect, useState } from "react";
 
 // Aqui hay que hacer el fetch a la lista de OFGS
 // seria algo asi como  api/ofgs -> [ cursos : {nombre : "ARTES", id = 0 ....}]
 // despues para hacer el fetch de los cursos del ofg [en la tabla]
-// api/ofgs/0 -> [ cursos : {nombre : "Dibujo", nrc = 2001, creditos: 10  ....}]
+// api/ofgs/0 -> [ cursos : {ombre : "Dibujo", nrc = 2001, creditos: 10  ....}]
 
 export default function Home() {
-  const [cursos, setCursos] = useState<Record<string, Array<string>>>({});
+  const [cursos, setCursos] = useState<OfgApi[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const areas = [
+    "Ciencias Sociales",
+    "Humanidades",
+    "Pensamiento Matemático",
+    "Salud y Bienestar",
+    "Ciencia y Tecnología",
+    "Formación Teológica",
+    "Artes",
+    "Ecología Integral y Sustentabilidad",
+    "Formación Filosófica",
+  ];
+  // const apiUrl = "https://iloveuwu.ddns.net/courses";
+  const apiUrl = "https://iloveuwu.ddns.net/courses/ofg?page=0&area=";
 
   useEffect(() => {
     const fetchCursos = async () => {
       try {
         setLoading(true);
-        const response = await fetch("assets/cursosdummy.json");
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+        const allCursos: Array<any> = []; // Array to hold cursos from all areas
+        for (const area of areas) {
+          const response = await fetch(apiUrl + area, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          const data = await response.json();
+
+          if (data.courses.length === 0) {
+            continue;
+          }
+
+          let ofg = {
+            area: data.courses[0].area,
+            cursos: data.courses.slice(0, 5), // solo los primeros 5
+          };
+          //console.log(ofg);
+          allCursos.push(ofg);
         }
-        const data = await response.json();
-        setCursos(data);
+        setCursos(allCursos); // Set all cursos at once
       } catch (err) {
         setError(err instanceof Error ? err.message : "Error fetching courses");
         console.error("Error fetching courses:", err);
@@ -61,8 +94,8 @@ export default function Home() {
         </div>
         {Object.keys(cursos).length > 0 ? (
           <section className="mt-9 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {Object.keys(cursos).map((curso) => (
-              <TarCurso key={curso} titulo={curso} cursos={cursos[curso]} />
+            {Object.values(cursos).map((curso) => (
+              <TarCurso key={curso.area} titulo={curso.area} cursos={curso.cursos} />
             ))}
           </section>
         ) : (
