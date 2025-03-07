@@ -9,8 +9,7 @@
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "pages:build": "npx @cloudflare/next-on-pages",
-    "preview": "node --run lint:fix && node --run pages:build && wrangler pages dev",
-    "deploy": "node --run lint:fix && node --run pages:build && wrangler pages deploy"
+    "preview": "node --run lint:fix && node --run pages:build && wrangler pages dev .vercel/output/static"
   },
   "dependencies": {
     "@hono/zod-openapi": "^0.18.4",
