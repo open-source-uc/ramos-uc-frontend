@@ -1,8 +1,5 @@
-import Link from "next/link";
-
 import { ServerAPIClient } from "./api/RPC";
 import CourseCard from "./components/CourseCard";
-import PageTitle from "./components/PageTitle";
 
 type SearchParams = Promise<{ page?: number }>;
 export default async function page({ searchParams }: { searchParams: SearchParams }) {
@@ -20,9 +17,7 @@ export default async function page({ searchParams }: { searchParams: SearchParam
 
   return (
     <>
-      <div className="flex gap-5">
-
-      </div>
+      <div className="flex gap-5" />
       <section className="flex w-full flex-wrap justify-center gap-5">
         {data.courses.map((course, index) => (
           <CourseCard course={course} key={index} />

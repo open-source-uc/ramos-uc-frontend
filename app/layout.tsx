@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+
 import "./globals.css";
 import Header from "./components/header/Header";
 

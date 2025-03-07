@@ -1,27 +1,23 @@
+import Link from "next/link";
+
 export default function Header() {
   return (
-    <header className="fixed top-0 left-0 w-full flex h-14 items-center justify-between bg-celeste px-4 z-50">
+    <header className="fixed left-0 top-0 z-50 flex h-14 w-full items-center justify-between bg-celeste px-4">
       <div className="flex items-center space-x-2">
-        <a href="/"> 
-          <h1 className="text-white font-bold">Ramos UC</h1>
-        </a>
+        <Link href="/">
+          <h1 className="font-bold text-white">Ramos UC</h1>
+        </Link>
       </div>
 
       <div className="flex">
-        <a href="/login">
-          <button className="mx-4 rounded-md bg-blue-900 px-4 h-8 text-sm text-white hover:bg-blue-700">
-            Login
-          </button>
-        </a>
+        <Link href="/login">
+          <button className="mx-4 h-8 rounded-md bg-blue-900 px-4 text-sm text-white hover:bg-blue-700">Login</button>
+        </Link>
 
-        <a href="/register">
-          <button className="rounded-md bg-blue-900 px-4 h-8 text-sm text-white hover:bg-blue-700">
-            Registro
-          </button>
-        </a>
+        <Link href="/register">
+          <button className="h-8 rounded-md bg-blue-900 px-4 text-sm text-white hover:bg-blue-700">Registro</button>
+        </Link>
       </div>
     </header>
   );
 }
-
-
