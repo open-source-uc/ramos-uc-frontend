@@ -1,6 +1,9 @@
 "use client";
 
+import { cookies } from "next/headers";
+
 import { UserAPIClient } from "../api/RPC";
+import { COOKIES } from "../lib/types";
 
 export async function ReviewCreate(
   prev: {
@@ -18,11 +21,8 @@ export async function ReviewCreate(
   },
   formData: FormData,
 ) {
-  const token = process.env.local;
-
-  console.log("token:", token);
-
-  const client = await UserAPIClient();
+  const c = await cookies();
+  const client = await UserAPIClient(c.get(COOKIES.USER_OSUC_TOKEN)?.value ?? "");
 
   const body = {
     course_id: parseInt(formData.get("course_id")?.toString() ?? "0") || prev.body.course_id,
@@ -80,7 +80,8 @@ export async function ReviewUpdate(
   },
   formData: FormData,
 ) {
-  const client = await UserAPIClient();
+  const c = await cookies();
+  const client = await UserAPIClient(c.get(COOKIES.USER_OSUC_TOKEN)?.value ?? "");
 
   const body = {
     course_id: parseInt(formData.get("course_id")?.toString() ?? "0") || prev.body.course_id,
@@ -133,7 +134,8 @@ export async function ReviewDelete(
   },
   formData: FormData,
 ) {
-  const client = await UserAPIClient();
+  const c = await cookies();
+  const client = await UserAPIClient(c.get(COOKIES.USER_OSUC_TOKEN)?.value ?? "");
 
   const body = {
     course_id: parseInt(formData.get("course_id")?.toString() ?? "0") || prev.body.course_id,
