@@ -1,4 +1,4 @@
-import { ServerAPIClient } from "@/app/api/RPC";
+import { ServerAPIClient } from "@/app/lib/ramos__uc_api/RPC";
 
 import Criticar from "./criticar";
 

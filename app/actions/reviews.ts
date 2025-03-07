@@ -2,7 +2,7 @@
 
 import { cookies } from "next/headers";
 
-import { UserAPIClient } from "../api/RPC";
+import { UserAPIClient } from "../lib/ramos__uc_api/RPC";
 import { COOKIES } from "../lib/types";
 
 export async function ReviewCreate(

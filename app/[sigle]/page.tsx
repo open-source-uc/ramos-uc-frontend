@@ -1,5 +1,5 @@
-import { ServerAPIClient } from "../api/RPC";
 import CourseInfo from "../components/CourseInfo";
+import { ServerAPIClient } from "../lib/ramos__uc_api/RPC";
 
 type Params = Promise<{ sigle: string }>;
 export default async function page({ params }: { params: Params }) {

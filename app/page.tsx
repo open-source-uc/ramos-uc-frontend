@@ -1,5 +1,5 @@
-import { ServerAPIClient } from "./api/RPC";
 import CourseCard from "./components/CourseCard";
+import { ServerAPIClient } from "./lib/ramos__uc_api/RPC";
 
 type SearchParams = Promise<{ page?: number }>;
 export default async function page({ searchParams }: { searchParams: SearchParams }) {
