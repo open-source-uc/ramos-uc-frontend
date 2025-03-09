@@ -59,7 +59,7 @@ export default function CourseCard({ course }: { course: Course }) {
               />
             ))
           ) : (
-            <span className="text-gray-500 dark:text-gray-400">No hay críticas todavía...</span>
+            <span className="text-gray-500 dark:text-gray-400">No hay creditos estimados...</span>
           )}
           {course.promedio_creditos_est > 0 && (
             <span className="ml-1 text-sm text-gray-500 dark:text-gray-400">
