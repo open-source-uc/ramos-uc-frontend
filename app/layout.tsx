@@ -19,7 +19,14 @@ export default function RootLayout({
         <title>Ramos Uc</title>
       </head>
       <body>
-        <main className="flex w-full flex-col">{children}</main>
+        <main className="flex min-h-screen w-full flex-col">{children}</main>
+        <footer className="mt-auto bg-gray-900 py-6 text-center text-white">
+          <div className="container mx-auto">
+            <p className="text-sm text-gray-400">
+              © {new Date().getFullYear()} Ramos UC. Todos los derechos reservados. Open Source UC.
+            </p>
+          </div>
+        </footer>
       </body>
     </html>
   );
