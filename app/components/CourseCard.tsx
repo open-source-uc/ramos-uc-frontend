@@ -14,7 +14,8 @@ type Course = {
 
 export default function CourseCard({ course }: { course: Course }) {
   return (
-    <article className="relative flex w-full max-w-sm flex-col overflow-hidden rounded-2xl border border-gray-300 bg-white px-2 py-3 shadow-lg transition-all hover:scale-[1.02] hover:shadow-xl dark:border-gray-700 dark:bg-gray-900">
+    <article className="group relative flex w-full max-w-sm flex-col overflow-hidden rounded-2xl border border-gray-300 bg-white px-2 py-3 shadow-lg transition-all hover:scale-[1.02] hover:shadow-xl dark:border-gray-700 dark:bg-gray-900">
+      {" "}
       {/* Contenido */}
       <div className="flex items-end justify-end gap-2">
         <span className="rounded-full bg-purple-100 px-3 py-1 text-sm text-purple-800">
@@ -24,13 +25,13 @@ export default function CourseCard({ course }: { course: Course }) {
       </div>
       <div className="flex flex-col px-6">
         {/* Nombre del curso */}
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{course.name}</h3>
-
+        <h3 className="relative overflow-hidden text-ellipsis whitespace-nowrap text-xl font-semibold text-gray-900 transition-all duration-300 group-hover:whitespace-normal dark:text-white">
+          {course.name}
+        </h3>
         {/* Código y créditos */}
         <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
           Código: <span className="font-medium">{course.sigle}</span> | Créditos Oficiales: {course.credits}
         </p>
-
         {/* Promedio del curso */}
         <div className="mt-2 flex items-center gap-1 text-yellow-500">
           {course.promedio > 0 ? (
@@ -58,7 +59,7 @@ export default function CourseCard({ course }: { course: Course }) {
               />
             ))
           ) : (
-            <span className="text-gray-500 dark:text-gray-400">No hay críticas todavía...</span>
+            <span className="text-gray-500 dark:text-gray-400">No hay creditos estimados...</span>
           )}
           {course.promedio_creditos_est > 0 && (
             <span className="ml-1 text-sm text-gray-500 dark:text-gray-400">

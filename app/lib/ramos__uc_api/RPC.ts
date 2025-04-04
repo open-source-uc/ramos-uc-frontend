@@ -1,5 +1,3 @@
-import { cookies } from "next/headers";
-
 import { hc } from "hono/client";
 
 import { AppType } from "./index";
@@ -16,11 +14,9 @@ export const ServerAPIClient = hc<AppType>(NEXT_PUBLIC_OSUC_API_URL ?? "http://l
 });
 
 // Cliente para usar en las consultas del usuario, tipo para editar datos del usuario, ver sus reviews, ver su panel de usuario,
-// cambiar su contraseña, crear reviews, etc.
+// cambiar su contraseña, crear reviews, etc js.
 export const UserAPIClient = async (token: string) => {
   "use client";
-
-  const cookieStore = await cookies();
 
   if (!token) {
     throw new Error("No token found");

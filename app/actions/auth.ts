@@ -2,7 +2,7 @@
 
 import { cookies } from "next/headers";
 
-import { ServerAPIClient } from "../api/RPC";
+import { ServerAPIClient } from "../lib/ramos__uc_api/RPC";
 
 export async function ActionLogin(
   prev: {

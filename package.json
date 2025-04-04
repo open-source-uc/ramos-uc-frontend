@@ -9,11 +9,11 @@
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "pages:build": "npx @cloudflare/next-on-pages",
-    "preview": "node --run lint:fix && node --run pages:build && wrangler pages dev",
-    "deploy": "node --run lint:fix && node --run pages:build && wrangler pages deploy"
+    "preview": "node --run lint:fix && node --run pages:build && wrangler pages dev .vercel/output/static"
   },
   "dependencies": {
     "@hono/zod-openapi": "^0.18.4",
+    "@tailwindcss/vite": "^4.0.6",
     "hono": "^4.7.0",
     "lucide-react": "^0.468.0",
     "next": "^15.1.5",

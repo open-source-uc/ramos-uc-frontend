@@ -1,5 +1,7 @@
 import { Metadata } from "next";
+
 import "./globals.css";
+import Header from "./components/header/Header";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -27,6 +29,8 @@ export default function RootLayout({
             </p>
           </div>
         </footer>
+        <Header /> {/* ✅ Add the Header component here */}
+        <main className="mt-16 flex w-full flex-col">{children}</main> {/* ✅ Add mt-16 to prevent overlap */}
       </body>
     </html>
   );
