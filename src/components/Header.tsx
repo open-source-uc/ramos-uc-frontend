@@ -4,7 +4,7 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
-import ButtonNavbar from "./ui/ButtonNavbar";
+import ButtonNavbar from "./ui/button-navbar";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -12,16 +12,16 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from "./ui/NavigationMenu";
+} from "./ui/navigation-menu";
 
 const components: { title: string; href: string; description: string }[] = [
   {
-    title: "Descubre Cursos",
-    href: "/404",
-    description: "Descubre los cursos más populares y recomendados.",
+    title: "Catálogo de Cursos",
+    href: "/catalog",
+    description: "Descubre los cursos disponibles en este semestre en la universidad.",
   },
   {
-    title: "Optativos de Formación General",
+    title: "Sobre las Áreas de Formación General",
     href: "/docs/primitives/hover-card",
     description:
       "For sighted users to preview content available behind a link.",
@@ -36,7 +36,8 @@ const components: { title: string; href: string; description: string }[] = [
 
 export default function Header() {
   return (
-    <header className="space-between tablet:space-x-8 flex w-full items-center py-8">
+    <header className="space-between tablet:space-x-8 flex w-full items-center py-8 px-4">
+      <a href="/">
       <img
         src="logos/UC_Logo_Big.svg"
         alt="UC Logo"
@@ -51,6 +52,7 @@ export default function Header() {
         height={200}
         className="tablet:block hidden h-20 w-auto"
       />
+      </a>
 
       <nav className="tablet:block hidden w-full space-y-3">
         <div className="border-foreground-muted-dark flex w-full justify-between space-x-4 border-b py-2">
@@ -119,12 +121,13 @@ export default function Header() {
             <ButtonNavbar text="Registrarse" url="/register" />
           </div>
         </div>
+      </div>
 
-        <div className="flex w-full space-x-2">
-          <ButtonNavbar text="MIS CURSOS FAVORITOS" url="/404" />
-          <ButtonNavbar text="MIS RESEÑAS" url="/404" />
-          <ButtonNavbar text="ORGANIZACIONES QUE SIGO" url="/404" />
-        </div>
+      <div className="flex w-full space-x-2">
+        <ButtonNavbar text="BUSCACURSOS ORIGINAL" url="https://buscacursos.uc.cl/" />
+        <ButtonNavbar text="PORTAL UC" url="https://portal.uc.cl/" />
+        <ButtonNavbar text="CANVAS UC" url="https://cursos.canvas.uc.cl/" />
+      </div>
       </nav>
     </header>
   );
